@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-top-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ludo Ultimate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        /* Base Colors */
+        --board-bg: #1f2937;
+        --cell-border: #4b5563;
+
+        /* Classic/Neon Theme Player Colors */
+        --bg-start-red: rgba(220, 38, 38, 0.3);
+        --bg-start-green: rgba(34, 197, 94, 0.3);
+        --bg-start-blue: rgba(59, 130, 246, 0.3);
+        --bg-start-yellow: rgba(234, 179, 8, 0.3);
+        --glow-red: #ef4444;
+        --glow-green: #22c55e;
+        --glow-blue: #3b82f6;
+        --glow-yellow: #eab308;
+
+        /* Futuristic Theme Player Colors */
+        --futuristic-red: #ff3b6a;
+        --futuristic-green: #00f5a0;
+        --futuristic-blue: #00d4ff;
+        --futuristic-yellow: #ffc900;
+        --futuristic-bg: #0d1120;
+        --futuristic-border: #3a528c;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+      @keyframes roll {
+        0% { transform: rotateX(0deg) rotateY(0deg) scale(1); }
+        100% { transform: rotateX(720deg) rotateY(720deg) scale(1); }
+      }
+      .animate-roll {
+        animation: roll 0.7s ease-in-out;
+      }
+       @keyframes pulse-glow {
+        0%, 100% {
+          box-shadow: 0 0 5px #fff, 0 0 10px var(--glow-color), 0 0 15px var(--glow-color);
+        }
+        50% {
+          box-shadow: 0 0 10px #fff, 0 0 15px var(--glow-color), 0 0 20px var(--glow-color);
+        }
+      }
+      .pulse-glow {
+        animation: pulse-glow 1.5s infinite;
+      }
+      @keyframes piece-hop {
+        0%, 100% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -70%) scale(1.1); }
+      }
+      .animate-hop {
+        animation: piece-hop 0.5s ease-in-out;
+      }
+      @keyframes float-up {
+        0% { transform: translateY(0) scale(0.5); opacity: 1; }
+        100% { transform: translateY(-60px) scale(1.2); opacity: 0; }
+      }
+      .animate-float-up {
+        animation: float-up 1.5s ease-out forwards;
+      }
+       @keyframes pulse-connection {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+      .animate-pulse-connection {
+        animation: pulse-connection 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes board-enter {
+        0% { transform: rotateX(75deg) rotateZ(45deg) scale(0.5) translateY(200px); opacity: 0; }
+        100% { transform: rotateX(55deg) rotateZ(45deg) scale(1) translateY(0); opacity: 1; }
+      }
+      .animate-board-enter {
+        animation: board-enter 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+       @keyframes hint-reveal {
+        0% { opacity: 0; transform: scale(0.8); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      .animate-hint-reveal {
+        animation: hint-reveal 0.5s ease-out forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.19.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-900 text-white">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
